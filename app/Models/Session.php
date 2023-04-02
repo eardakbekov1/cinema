@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    use HasFactory;
+    protected $fillable = ['id', 'session_time'];
+    public function HallMovieSeatSessions(): HasMany
+    {
+        return $this->hasMany(HallMovieSeatSession::class);
+    }
 }

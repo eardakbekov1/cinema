@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
+    protected $fillable = ['id', 'name'];
+
+    public function HallMovieSeatSessions(): HasMany
+    {
+        return $this->hasMany(HallMovieSeatSession::class);
+    }
 }

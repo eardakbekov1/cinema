@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seat extends Model
 {
-    use HasFactory;
+    protected $fillable = ['id', 'set_number'];
+    public function HallMovieSeatSessions(): HasMany
+    {
+        return $this->hasMany(HallMovieSeatSession::class);
+    }
 }

@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cinema extends Model
 {
-    use HasFactory;
+    protected $fillable = ['id', 'name'];
+
+    public function halls(): HasMany
+    {
+        return $this->hasMany(Hall::class);
+    }
 }
