@@ -2,24 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hall;
-use http\Env\Response;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class HallController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $halls = Hall::where('theater_id', '=', $request->id)->get();
-
-        $view = view('halls.index', compact('halls'))->render();
-
-        return response()->json(['view' => $view]);
+        //
     }
 
     /**
@@ -46,10 +41,10 @@ class HallController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hall  $hall
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function show(Hall $hall)
+    public function show(Status $status)
     {
         //
     }
@@ -57,10 +52,10 @@ class HallController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hall  $hall
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hall $hall)
+    public function edit(Status $status)
     {
         //
     }
@@ -69,10 +64,10 @@ class HallController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Hall  $hall
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hall $hall)
+    public function update(Request $request, Status $status)
     {
         //
     }
@@ -80,10 +75,10 @@ class HallController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hall  $hall
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hall $hall)
+    public function destroy(Status $status)
     {
         //
     }
