@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HallMovieSeatSession extends Model
 {
-    protected $fillable = ['id', 'hall_id', 'movie_id', 'seat_id', 'session_id', 'user_id'];
+    protected $fillable = ['id', 'hall_id', 'movie_id', 'seat_id', 'session_id', 'user_id', 'status_id'];
     public function hall(): BelongsTo
     {
         return $this->belongsTo(Hall::class);
@@ -31,5 +31,10 @@ class HallMovieSeatSession extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
     }
 }
