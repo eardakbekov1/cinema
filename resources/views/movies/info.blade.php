@@ -11,7 +11,7 @@
     <tr>
         <td>{{$movie->id}}</td>
         <td>
-            <a href="#" class="halls" id="hall-{{$movie->id}}" data-id="{{$movie->id}}">{{$movie->name}}</a>
+            <a href="#" class="movies" id="movie-{{$movie->id}}" data-id="{{$movie->id}}">{{$movie->name}}</a>
         </td>
     </tr>
     @endforeach

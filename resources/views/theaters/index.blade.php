@@ -24,6 +24,8 @@
         padding: 20px;
         border: 1px solid #888;
         width: 80%;
+        display: flex;
+        justify-content: center;
     }
 
     /* The Close Button */
@@ -39,6 +41,12 @@
         color: #000;
         text-decoration: none;
         cursor: pointer;
+    }
+
+    .modal-inner {
+        width: 80%;
+        display: flex;
+        justify-content: center;
     }
 </style>
 
@@ -85,8 +93,10 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="hallsList"></div>
-            <div id="moviesList"></div>
+            <div class="modal-inner" id="hallsList"></div>
+            <div class="modal-inner" id="moviesList"></div>
+            <div class="modal-inner" id="sessionsList"></div>
+            <div class="modal-inner" id="seatsList"></div>
         </div>
 
     </div>
@@ -98,13 +108,13 @@
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-        // $(document).ready(function(){
+
         $(document).ready(function(){
-            //     $("#addButton").click(function(){
+
         $('.theater-show').click(function(){
             let id = $(this).data('id');
+
             // When the user clicks the button, open the modal
-            //         $("#forButton").append("<button class='btn btn-primary' id='getAlert'>Get alert</button>");
             modal.style.display = "block";
 
                 $.ajax({
@@ -119,12 +129,11 @@
                     }
                 });
         });
-            //     });
-//     $(document).on("click", "button#getAlert" , function() {
+
             $(document).on("click", "a.halls", function(){
 
                 let hallId = $("a.halls").data("id");
-                //         alert("Text marked!");
+
                 $.ajax({
                     url: '{{route('movies.info')}}',
                     type: 'GET',
@@ -137,9 +146,42 @@
                     }
                 });
             });
-//     });
+
+            $(document).on("click", "a.movies", function(){
+
+                let movieId = $("a.movies").data("id");
+
+                $.ajax({
+                    url: '{{route('sessions.index')}}',
+                    type: 'GET',
+                    data: {movieId: movieId},
+                    success: function (data){
+                        $('#sessionsList').html(data.view);
+                    },
+                    fail: function (data){
+                        alert('error');
+                    }
+                });
+            });
+
+            $(document).on("click", "a.sessions", function(){
+
+                let sessionId = $("a.sessions").data("id");
+
+                $.ajax({
+                    url: '{{route('seats.index')}}',
+                    type: 'GET',
+                    data: {sessionId: sessionId},
+                    success: function (data){
+                        $('#seatsList').html(data.view);
+                    },
+                    fail: function (data){
+                        alert('error');
+                    }
+                });
+            });
+
         });
-            // });
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {

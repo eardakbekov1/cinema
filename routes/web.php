@@ -27,5 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('movies', \App\Http\Controllers\MovieController::class);
 Route::resource('theaters', \App\Http\Controllers\TheaterController::class);
 Route::resource('halls', \App\Http\Controllers\HallController::class);
+Route::resource('sessions', \App\Http\Controllers\SessionController::class);
+Route::resource('seats', \App\Http\Controllers\SeatController::class);
 
 Route::get('/get-movies-info', [App\Http\Controllers\MovieController::class, 'getMovies'])->name('movies.info');

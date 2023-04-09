@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,13 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $sessions = Session::all();
+
+        $view = view('sessions.index', compact('sessions'))->render();
+
+        return response()->json(['view' => $view]);
     }
 
     /**

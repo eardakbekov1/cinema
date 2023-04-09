@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seat;
+use App\Models\Session;
 use Illuminate\Http\Request;
 
 class SeatController extends Controller
@@ -12,9 +13,13 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $seats = Seat::all();
+
+        $view = view('seats.index', compact('seats'))->render();
+
+        return response()->json(['view' => $view]);
     }
 
     /**
