@@ -28,4 +28,4 @@ Route::resource('movies', \App\Http\Controllers\MovieController::class);
 Route::resource('theaters', \App\Http\Controllers\TheaterController::class);
 Route::resource('halls', \App\Http\Controllers\HallController::class);
 
-Route::get('/movies/info', [App\Http\Controllers\MovieController::class, 'info'])->name('movies.info');
+Route::get('/get-movies-info', [App\Http\Controllers\MovieController::class, 'getMovies'])->name('movies.info');

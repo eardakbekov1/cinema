@@ -92,15 +92,19 @@
     </div>
 
     <script>
+
         // Get the modal
         var modal = document.getElementById("myModal");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-
+        // $(document).ready(function(){
+        $(document).ready(function(){
+            //     $("#addButton").click(function(){
         $('.theater-show').click(function(){
             let id = $(this).data('id');
             // When the user clicks the button, open the modal
+            //         $("#forButton").append("<button class='btn btn-primary' id='getAlert'>Get alert</button>");
             modal.style.display = "block";
 
                 $.ajax({
@@ -115,6 +119,27 @@
                     }
                 });
         });
+            //     });
+//     $(document).on("click", "button#getAlert" , function() {
+            $(document).on("click", "a.halls", function(){
+
+                let hallId = $("a.halls").data("id");
+                //         alert("Text marked!");
+                $.ajax({
+                    url: '{{route('movies.info')}}',
+                    type: 'GET',
+                    data: {hallId: hallId},
+                    success: function (data){
+                        $('#moviesList').html(data.view);
+                    },
+                    fail: function (data){
+                        alert('error');
+                    }
+                });
+            });
+//     });
+        });
+            // });
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -127,6 +152,7 @@
                 modal.style.display = "none";
             }
         }
+
     </script>
 
 @endsection
