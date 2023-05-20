@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hall;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class HallController extends Controller
@@ -12,9 +13,13 @@ class HallController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $halls = Hall::where('theater_id', '=', $request->id)->get();
+
+        $view = view('halls.index', compact('halls'))->render();
+
+        return response()->json(['view' => $view]);
     }
 
     /**

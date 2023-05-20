@@ -96,4 +96,13 @@ class MovieController extends Controller
         return redirect()->route('movies.index')
             ->with('success','Фильм успешно удален!');
     }
+
+    public function getMovies(Request $request)
+    {
+        $movies = Movie::all();
+
+        $view = view('movies.info', compact('movies'))->render();
+
+        return response()->json(['view' => $view]);
+    }
 }

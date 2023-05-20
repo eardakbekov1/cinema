@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-use \App\Http\Controllers\CinemaController;
+use App\Http\Controllers\TheaterController;
+use App\Http\Controllers\HallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use \App\Http\Controllers\CinemaController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('cinemas.index');
+    return redirect()->route('theaters.index');
 });
 
 Auth::routes();
@@ -25,10 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('movies', \App\Http\Controllers\MovieController::class);
 Route::resource('theaters', \App\Http\Controllers\TheaterController::class);
-//Route::get('/cinemas', [App\Http\Controllers\CinemaController::class, 'index'])->name('cinemas.index');
-//Route::get('/cinemas/create', [App\Http\Controllers\CinemaController::class, 'create'])->name('cinemas.create');
-//Route::post('/cinemas', [App\Http\Controllers\CinemaController::class, 'store'])->name('cinemas.store');
-//Route::get('/cinemas/{cinema}', [App\Http\Controllers\CinemaController::class, 'show'])->name('cinemas.show');
-//Route::get('/cinemas/{cinema}/edit', [App\Http\Controllers\CinemaController::class, 'edit'])->name('cinemas.edit');
-//Route::put('/cinemas/{cinema}', [App\Http\Controllers\CinemaController::class, 'update'])->name('cinemas.update');
-//Route::delete('/cinemas/{cinema}', [App\Http\Controllers\CinemaController::class, 'destroy'])->name('cinemas.destroy');
+Route::resource('halls', \App\Http\Controllers\HallController::class);
+Route::resource('sessions', \App\Http\Controllers\SessionController::class);
+Route::resource('seats', \App\Http\Controllers\SeatController::class);
+
+Route::get('/get-movies-info', [App\Http\Controllers\MovieController::class, 'getMovies'])->name('movies.info');
