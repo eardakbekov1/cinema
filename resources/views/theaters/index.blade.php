@@ -48,6 +48,11 @@
         display: flex;
         justify-content: center;
     }
+
+    #seatsList{
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
 
 @section('content')

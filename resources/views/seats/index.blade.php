@@ -1,20 +1,30 @@
 <h2>Места</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Место</th>
-    </tr>
-    </thead>
-    <tbody>
+<br>
+<div class="seatsContainer">
     @foreach($seats as $seat)
-        <tr>
-            <td>{{$seat->id}}</td>
-            <td>
-                <a href="#" class="seats" id="seat-{{$seat->id}}" data-id="{{$seat->id}}">{{$seat->seat_number}}</a>
-            </td>
-        </tr>
+                <a href="#" class="seats" id="seat-{{$seat->id}}" data-id="{{$seat->id}}">
+                    <div class="seatsVis">{{$seat->seat_number}}</div>
+                </a>
     @endforeach
-    </tbody>
-</table>
+</div>
+<style>
+    .seatsVis{
+        width: 50px;
+        height: 50px;
+        background-color: royalblue;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        border: 3px Solid black;
+    }
+
+    .seatsContainer {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+
 
